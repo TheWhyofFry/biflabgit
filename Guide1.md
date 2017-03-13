@@ -45,16 +45,17 @@ You're viewing this document on GitHub. GitHub is an online resource to store yo
 
 It isn't absolutely crucial to create a repository on GitHub, it is prudent to understand the workings of git in the context of a remote repository as you may very well be required to work on projects hosted on Github in the (possibly near :-) ) future.
 
-So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo". 
+So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo". Don't worry about the error message in the clip below - it just shows that I already created a repository called "simplerepo".
 
 
 ![Repo add](clips/newrepo.gif)
-<> ![Repo add](images/guide1_name.png)
+
 
 ![Repo creation](images/guide1_emptyrepo.png)
 
 ##Fetching the repository from GitHub
-So let's fetch this repo. We can open a terminal in your favourite OS.  Invoke the following command.
+
+Let's fetch this repo. We can open a terminal in your favourite OS.  Invoke the following command.
 
 ```shell
 $:~/Sources/git> git pull https://github.com/[yourchosenusername]/simplerepo.
