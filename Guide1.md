@@ -1,19 +1,55 @@
-# Introduction to Git 
+# About this guide
 
-This guide is a very brief overview of ``git`` and will be alinged with the lectures as presented in the lab.  It is by no means a complete guide. 
+This guide is a very brief overview of ``git`` and will be alinged with the lectures as presented in the lab.  It is by no means a complete guide. To recap, ``git`` is a version control system. This means that instead of holding single versions of a file, or having copies of files with horrible names such as ``final_report_i_mean_it_this_time.tex`` a history is held as the original file ``report.tex`` changes over time.  By keeping track of _all_ the changes made not only to specific files, but to the entire directory (folder) of your work, project management becomes simpler. Before entering the *_gittening_* we'll revisit a traditional folder setup. Consider the following folder.
 
-## About this guide
+ 
+```shell
+werner@linux-dcgb:/tmp/test> ls -l
+total 316
+-rw-r--r-- 1 werner users 300317 Mar 13 20:49 DATA.txt
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
+-rw-r--r-- 1 werner users   3125 Mar 13 20:49 REPORT.txt
+werner@linux-dcgb:/tmp/test> 
+```
 
-A few things before we start. This guide is rendered in a neat, pretty way as you're reading it.  It is written in "markdown".  You may be familiar with "markup" languages such as HTTML for rendering pretty pages in a browser.  Markdown is a lightweight alternative that allows for the creation of professional looking documents without too much hassle.  Oh, and because the strucutre is simple, it is a trivial task to look at ``diffs`` (more on this later). 
+There is implicitly no information on previous versions of this file. Your supervisor is reading the introduction of your ``REPORT.TXT`` and emails you a copy back with corrections, ``REPORT_SS.TXT``. This is now the edited and annotated version of the ``REPORT.TXT``. Assuming your supervisor is correct, you rename ``REPORT.TXT`` to ``REPORT_DRAFT1.TXT`` and ``REPORT_SS.TXT`` to ``REPORT_LATEST.TXT``. It's easy to imagine how confusing this process becomes at the 10th iteration of this process. 
 
+
+```shell
+werner@linux-dcgb:/tmp/test> ls -l
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README_SS.txt
+-rw-r--r-- 1 werner users  15149 Mar 29 20:49 README_LATEST.txt
+-rw-r--r-- 1 werner users  15149 Mar 15 20:49 README_DRAFT1.txt
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README_SS.txt
+-rw-r--r-- 1 werner users  15149 Mar 29 20:49 README_LATEST.bak
+-rw-r--r-- 1 werner users  15149 Mar 15 20:49 README_DRAFT1.txt
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
+werner@linux-dcgb:/tmp/test> 
+```
+
+
+
+Wouldn't it be great if we had intermediate copies of files where changes can be implicitly reviewed?  You tentatively introduce your supervisor to Git. You get the task of re-organizing the fruits of your research (bad code and all). Enthusiastically, you look up git and decide to get straight to work. Unfortunately, you quickly realize that even though this tool is purpoted to be really really _*really*_ awesome, its use (initially) is not trivial. Add? Push? Pull? Commit? Clone? Blame?! You correctly conclude that it would be better to actually learn git from scratch using toy folders as a starting point. 
+
+
+## Almost there
+
+A few more things before we start. This guide is rendered in a neat, pretty way as you're reading it.  It is written in "markdown".  You may be familiar with "markup" languages such as HTTML for rendering pretty pages in a browser.  Markdown is a lightweight alternative that allows for the creation of professional looking documents without too much hassle.  Oh, and because the strucutre is simple, it is a trivial task to look at ``diffs`` (more on this later). 
+
+You're viewing this document on GitHub. GitHub is an online resource to store your repositories. The advantage of this is obvious, as it becomes easier toe collaborate with users from all over the world to your project. 
 
 
 
 ## Creating a git repository
 
-Although it isn't absolutely crucial to create a repository on GitHub, it is prudent to understand the workings of git in the context of a remote repository as you may very well be required to work on projects hosted on Github in the (possibly near :-) ) future.
+It isn't absolutely crucial to create a repository on GitHub, it is prudent to understand the workings of git in the context of a remote repository as you may very well be required to work on projects hosted on Github in the (possibly near :-) ) future.
 
-So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo".  You'll be notified with the following:
+So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo". 
+
+
+![Repo add](images/guide1_newrepo.png)
+![Repo add](images/guide1_name.png)
 
 ![Repo creation](images/guide1_emptyrepo.png)
 
