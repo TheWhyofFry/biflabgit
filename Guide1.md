@@ -32,9 +32,9 @@ Since there is nothing in the repository, ``git`` will let you know that there i
 ```shell
 $:~/Sources/git> cd simplerepo
 
-werner.local@parker:~/Sources/git/simplerepo> echo "#This is the README of simplerepo." >> README.md
+$:~/Sources/git/simplerepo> echo "#This is the README of simplerepo." >> README.md
 
-werner.local@parker:~/Sources/git/simplerepo> cat README.md
+$:~/Sources/git/simplerepo> cat README.md
 
 #This is the README of simplerepo.
 ```
@@ -42,8 +42,8 @@ werner.local@parker:~/Sources/git/simplerepo> cat README.md
 We need to add this file to the repository. The ``git add`` command adds a file to the _staging_ area.  You can think of this as a state of "limbo".  We can review this ``add`` with the ``git status`` command.
 
 ```shell
-werner.local@parker:~/Sources/git/simplerepo> git add README.md 
-werner.local@parker:~/Sources/git/simplerepo> git status
+$:~/Sources/git/simplerepo> git add README.md 
+$:~/Sources/git/simplerepo> git status
 On branch master
 
 Initial commit
@@ -66,7 +66,7 @@ There are several components to this message.
 In order to fully integrate this file with the repository, we need to issue the ``git commit``. The ``commit`` will _commit_ these changes we've made to the _repository_. 
 
 ```shell
-werner.local@parker:~/Sources/git/simplerepo> git commit -m "Added a simple line to README.md"
+$:~/Sources/git/simplerepo> git commit -m "Added a simple line to README.md"
 [master (root-commit) c464535] Added a simple line to README.md
  1 file changed, 1 insertion(+)
  create mode 100644 README.md
@@ -75,7 +75,7 @@ werner.local@parker:~/Sources/git/simplerepo> git commit -m "Added a simple line
 If you go to the repository on GitHub, you'll notice that it is still empty.  We've only comitted the changes we've made to the _local_ copy of our repository.  To make changes to the _remote_ repository, the one on GitHub, ``git push`` is used. It is also necessary to add the _origin_ of this repository so it knows where to ``push`` the commit to. However, because we cloned the repository from GitHub, the remote _origin_ is already there.  For the purpose of this exercise we remove our _origin_ from the repository.
 
 ```
-werner.local@parker:~/Sources/git/simplerepo> git remote rm origin
+$:~/Sources/git/simplerepo> git remote rm origin
 ```
 
 ##Adding a remote repository
@@ -83,8 +83,8 @@ werner.local@parker:~/Sources/git/simplerepo> git remote rm origin
 The ``git remote add`` command is used to add a remote repository where the changes will be _pushed_ to. 
 
 ```
-werner.local@parker:~/Sources/git/simplerepo> git remote add origin https://github.com/[yourusername]/simplerepo.git
-werner.local@parker:~/Sources/git/simplerepo> git remote 
+$:~/Sources/git/simplerepo> git remote add origin https://github.com/[yourusername]/simplerepo.git
+$:~/Sources/git/simplerepo> git remote 
 origin
 ```
 
@@ -92,7 +92,7 @@ origin
 Great, now we've added a remote repository. The changes can be pushed to the remote github.  The ``git push`` command needs a _origin_ and _branch_ of what needs to be committed. It is also possible to invoke the ``-u`` parameter after ``push`` to save the default _remote orgin_ so that with future commits, just using ``git push`` will suffice.
 
 ```
-werner.local@parker:~/Sources/git/simplerepo> git push -u origin master
+$:~/Sources/git/simplerepo> git push -u origin master
 Counting objects: 3, done.
 Writing objects: 100% (3/3), 299 bytes | 0 bytes/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
