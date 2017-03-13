@@ -105,6 +105,6 @@ Branch master set up to track remote branch master from origin.
 
 The funny numbers are the leading values of a _hash_ calculated for this commit.  Simply put, hashses are unique IDs so we have reference points when we want to refer to a specific commit. The value is actually 40 characters long, but for simplicity only the first seven characters of the has is given.  
 
-[Remote initial commit](images/guide1_initialcommit.png)
+![Remote initial commit](images/guide1_initialcommit.png)
 
 
