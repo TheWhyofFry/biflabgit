@@ -48,8 +48,8 @@ It isn't absolutely crucial to create a repository on GitHub, it is prudent to u
 So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo". 
 
 
-![Repo add](images/guide1_newrepo.png)
-![Repo add](images/guide1_name.png)
+![Repo add](clips/newrepo.gif)
+<> ![Repo add](images/guide1_name.png)
 
 ![Repo creation](images/guide1_emptyrepo.png)
 
