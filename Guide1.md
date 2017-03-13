@@ -21,7 +21,7 @@ xx
 So let's fetch this repo. We can open a terminal in your favourite OS.  Invoke the following command.
 
 ```shell
-werner@parker:~/Sources/git> git pull https://github.com/[yourchosenusername]/simplerepo.
+$:~/Sources/git> git pull https://github.com/[yourchosenusername]/simplerepo.
 Cloning into 'simplerepo'...
 warning: You appear to have cloned an empty repository.
 Checking connectivity... done.
@@ -30,7 +30,7 @@ Checking connectivity... done.
 Since there is nothing in the repository, ``git`` will let you know that there is nothing in the repository yet.  So let's create a file.  You might want to let people know what this particular repository is all about.  By default, GitHub will display the contents of a ``README.md`` file.  The extension ".md" indicates that the file is in "markdown" format - like this guide. For now, we'll just include a simple line of text to ``README.md``.
 
 ```shell
-werner@parker:~/Sources/git> cd simplerepo
+$:~/Sources/git> cd simplerepo
 
 werner.local@parker:~/Sources/git/simplerepo> echo "#This is the README of simplerepo." >> README.md
 
