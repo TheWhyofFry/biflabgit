@@ -15,7 +15,7 @@ Although it isn't absolutely crucial to create a repository on GitHub, it is pru
 
 So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo".  You'll be notified with the following:
 
-xx
+![Repo creation](images/guide1_emptyrepo.png)
 
 ##Fetching the repository from GitHub
 So let's fetch this repo. We can open a terminal in your favourite OS.  Invoke the following command.
@@ -38,6 +38,8 @@ $:~/Sources/git/simplerepo> cat README.md
 
 #This is the README of simplerepo.
 ```
+
+
 ##Adding files to the staging area
 We need to add this file to the repository. The ``git add`` command adds a file to the _staging_ area.  You can think of this as a state of "limbo".  We can review this ``add`` with the ``git status`` command.
 
@@ -63,7 +65,7 @@ There are several components to this message.
 
 
 ##Commiting the changes to the repository
-In order to fully integrate this file with the repository, we need to issue the ``git commit``. The ``commit`` will _commit_ these changes we've made to the _repository_. 
+In order to fully integrate this file with the repository (making the changes for realsies) we need to issue the ``git commit``. The ``commit`` will _commit_ these changes we've made to the _repository_. 
 
 ```shell
 $:~/Sources/git/simplerepo> git commit -m "Added a simple line to README.md"
@@ -101,6 +103,8 @@ To https://github.com/thewhyoffry/simplerepo.git
 Branch master set up to track remote branch master from origin.
 ```
 
-The funny numbers are the leading values of a _hash_ calculated for this commit.  Simply put, hashses are unique IDs so we have reference points when we want to refer to a specific commit. The value is actually 40 characters long, but for simplicity only the first seven characters of the has is given.
+The funny numbers are the leading values of a _hash_ calculated for this commit.  Simply put, hashses are unique IDs so we have reference points when we want to refer to a specific commit. The value is actually 40 characters long, but for simplicity only the first seven characters of the has is given.  
+
+[Remote initial commit](images/guide1_initialcommit.png)
 
 
