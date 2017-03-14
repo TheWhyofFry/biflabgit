@@ -1,6 +1,6 @@
 # About this guide
 
-This guide is a very brief overview of ``git`` and will be alinged with the lectures as presented in the lab.  It is by no means a complete guide. 
+This guide is a very brief overview of ``git`` and will be alinged with the lectures as presented in the lab.  It is by no means a complete guide. Full reference can be found [here](https://git-scm.com/docs) and an online version of the "GitPro" book can be found [here](https://git-scm.com/book/en/v2). You are more than welcome to follow those guides rather than this one if you so desire.
 
 
 To recap, ``git`` is a version control system. This means that instead of holding single versions of a file, or having copies of files with horrible names such as ``final_report_i_mean_it_this_time.tex`` a history is held as the original file ``report.tex`` changes over time.  By keeping track of _all_ the changes made not only to specific files, but to the entire directory (folder) of your work, project management becomes simpler. Before entering the *_gittening_* we'll revisit a traditional folder setup. Consider the following folder.
@@ -236,3 +236,7 @@ Branch master set up to track remote branch master from origin.
 You can refresh your repository page on GitHub and marvel at the changes. Clicking on  ``README.md`` will allow you to show the history of commits relating to changes of this file.  You can click on a particular commit, to see the differences between the file and its previous (or other) commits.
 
 ![simplerepodiff](clips/commitdiff.gif)
+
+So play around with the commands you've learned so far. Make changes, commit etc.  You can even look at the history of this guide by clicking on the "history" button :-) 
+(E&OE ;-) )
+
