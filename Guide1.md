@@ -55,9 +55,11 @@ It isn't absolutely crucial to create a repository on GitHub, but it is prudent 
 So first, create an account at [GitHub](https://github.com). The steps are rather intuitive.  Once you've created your account - and please take your time, there is no rush - create an empty repository called "simplerepo" as shown in the clip below. Don't worry about the error message in the example - it just shows that I already created a repository called "simplerepo". This repository will serve as our "clean slate". 
 
 
+> GitHub will provide you with instructions to create a git repository on your local machine and then migrating it to your newly created repository on GitHub.  This is useful if you already have a git repository on your local machine and you just want to make it available on GitHub.  This guide will focus on grabbing a repository and working from there. 
+
 ![Repo add](clips/newrepo.gif)
 
-> GitHub will provide you with instructions to create a git repository on your local machine and then migrating it to your newly created repositoery on GitHub.  This is useful if you already have a git repository on your local machine and you just want to make it available on GitHub.  This guide will focus on grabbing a repository and working from there. 
+
 
 ![Repo creation](images/guide1_emptyrepo.png)
 
