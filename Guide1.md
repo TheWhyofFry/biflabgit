@@ -235,4 +235,4 @@ Branch master set up to track remote branch master from origin.
 
 You can refresh your repository page on GitHub and marvel at the changes. Clicking on  ``README.md`` will allow you to show the history of commits relating to changes of this file.  You can click on a particular commit, to see the differences between the file and its previous (or other) commits.
 
-![simplerepodiff]()
+![simplerepodiff](clips/commitdiff.gif)
