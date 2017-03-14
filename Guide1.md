@@ -7,19 +7,19 @@ To recap, ``git`` is a version control system. This means that instead of holdin
 
  
 ```shell
-werner@linux-dcgb:/tmp/test> ls -l
+$:/tmp/test> ls -l
 total 316
 -rw-r--r-- 1 werner users 300317 Mar 13 20:49 DATA.txt
 -rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
 -rw-r--r-- 1 werner users   3125 Mar 13 20:49 REPORT.txt
-werner@linux-dcgb:/tmp/test> 
+$:/tmp/test> 
 ```
 
 There is implicitly no information on previous versions of this file. Your supervisor is reading the introduction of your ``REPORT.TXT`` and emails you a copy back with corrections, ``REPORT_SS.TXT``. This is now the edited and annotated version of the ``REPORT.TXT``. Assuming your supervisor is correct, you rename ``REPORT.TXT`` to ``REPORT_DRAFT1.TXT`` and ``REPORT_SS.TXT`` to ``REPORT_LATEST.TXT``. It's easy to imagine how confusing this process becomes at the 10th iteration of this process. 
 
 
 ```shell
-werner@linux-dcgb:/tmp/test> ls -l
+$:/tmp/test> ls -l
 -rw-r--r-- 1 werner users  15149 Mar 13 20:49 README_SS.txt
 -rw-r--r-- 1 werner users  15149 Mar 29 20:49 README_LATEST.txt
 -rw-r--r-- 1 werner users  15149 Mar 15 20:49 README_DRAFT1.txt
@@ -28,7 +28,7 @@ werner@linux-dcgb:/tmp/test> ls -l
 -rw-r--r-- 1 werner users  15149 Mar 29 20:49 README_LATEST.bak
 -rw-r--r-- 1 werner users  15149 Mar 15 20:49 README_DRAFT1.txt
 -rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
-werner@linux-dcgb:/tmp/test> 
+$:/tmp/test> 
 ```
 
 
