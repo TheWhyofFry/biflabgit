@@ -198,6 +198,8 @@ index 53a25f6..c511fb5 100644
 
 The lines starting with ``+`` indicate lines that have been inserted in the edited ``README.md`` compared with the ``README.md`` in the repository. Add ``README.md`` to the staging area with ``git add REAMDE.md`` and check the status of the repository with ``git status``. You'll notice that the _repository_ is up to date, but that there are changes that need to be committed. So even though our changes are in the staging area, the repository is still unaware of it.  
 
+```
+
 ```shell
 $~/Sources/git/simplerepo> git add README.md
 $~/Sources/git/simplerepo> git status
