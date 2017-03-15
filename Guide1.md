@@ -245,8 +245,12 @@ So play around with the commands you've learned so far. Make changes, commit etc
 (E&OE ;-) )
 
 Feel free to contact me if you have any questions.
+<<<<<<< HEAD
 
 ---
+=======
+--
+>>>>>>> 523d5d47ed6204d9c0d648015fc0006cbd0b1ffc
 
 ~~Next week~~
 
