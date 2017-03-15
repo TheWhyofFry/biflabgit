@@ -27,7 +27,7 @@ $:/tmp/test> ls -l
 -rw-r--r-- 1 werner users  15149 Mar 13 20:49 README_SS.txt
 -rw-r--r-- 1 werner users  15149 Mar 29 20:49 README_LATEST.bak
 -rw-r--r-- 1 werner users  15149 Mar 15 20:49 README_DRAFT1.txt
--rw-r--r-- 1 werner users  15149 Mar 13 20:49 README.txt
+-rw-r--r-- 1 werner users  15149 Mar 13 20:49 README1.txt
 $:/tmp/test> 
 ```
 
@@ -243,4 +243,8 @@ You can refresh your repository page on GitHub and marvel at the changes. Clicki
 
 So play around with the commands you've learned so far. Make changes, commit etc.  You can even look at the history of this guide by clicking on the "history" button :-) 
 (E&OE ;-) )
+
+Feel free to contact me if you have any questions.
+
+
 
