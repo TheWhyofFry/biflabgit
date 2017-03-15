@@ -68,7 +68,7 @@ So first, create an account at [GitHub](https://github.com). The steps are rathe
 Let's clone this repo - literally. We can open a terminal in your favourite OS. Invoke the following command.  Make a folder called "git" anywhere you seem fit.  You should just remember the location so you know where to navigate to in the terminal.  My git folder is in my home folder under ``Sources``
 
 ```shell
-$:~/Sources/git> git pull https://github.com/[yourchosenusername]/simplerepo.
+$:~/Sources/git> git clone https://github.com/[yourchosenusername]/simplerepo.
 Cloning into 'simplerepo'...
 warning: You appear to have cloned an empty repository.
 Checking connectivity... done.
