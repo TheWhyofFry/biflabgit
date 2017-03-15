@@ -212,7 +212,7 @@ Changes to be committed:
 	modified:   README.md
 ```
 
-Commit the changes with ``git commit -m "[insert your commit message here]"```.
+Commit the changes with ``git commit -m "[insert your commit message here]"``.
 
 ```shell
 $~/Sources/git/simplerepo> git commit -m "Added some info to README.md"
