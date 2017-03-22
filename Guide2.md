@@ -69,23 +69,30 @@ The column order follows the order of the file parameters you've given.  The job
 Instead of doing things line-by-line, diff tries to get blocks of text that are different between files.  The first block deals with the lines:
 
 > everyone you meat
- All you dislike
+
+> All you dislike
 
 These lines have both been changed by you and Bob to:
 
 > everyone you **meet**
- All **that** you **slight**
+
+> All **that** you **slight**
+
 
 Since both you and Bob's edits are the same, there is no conflict and this part can be auto-merged. The next block of changes are insertions.  These lines did not exist in the original ``commit1.txt`` file and are also shared between your edit and Bob's edit.  So Bob added the lines (for this block):
 
 > All that is now
+
 > All that is gone
+
 > All that's to come
 
 The same block is hilighted in your edit.  However, there is a slight difference between the first line of the block.
 
 > All **that is** now (Bob)
+
 > All **that's** now (You)
+
 
 This conflict cannot be auto-resolved. When you initially chose the ``Merge -> Merge Current File`` option in ``KDiff3``, it automatically moves to the first line where it cannot automatically resolve a conflict. In the top-right of the window, there are three buttons "A", "B" and "C". Each of them represents the files of column A, B and C, read left to right. If you decide Bob's version is correct, you will click on B.  If you think your version is correct, you will click on C.  Note, however, that you can both select and deselect multiple columns.  However, to resolve the merge (where there is unresolvable conflict) you need to choose _only_ the column of the change you accept.  Bob's version is correct, so choose "B". *``KDiff3`` can be a little quirky at times, so you might not see "A/B/C" being highlighted.  Click on the coloured bar next to the line where the conflict is (in column C)*.
 
