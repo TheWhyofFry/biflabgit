@@ -294,4 +294,36 @@ The next part of the tutorial is a
 
 # Adding your name to MAINTAINERS.md
 
+Bifblast is the lab project we'll be working on.  It will be a BLAST server simlar to [SequenceServer](http://sequenceserver.com/). A simple description of the project:
+
+> BifBlast is a web-based BLAST that allows users to create a BLAST database of an arbitrary set of sequences and then to BLAST sequences against this created database
+
+Before we get ahead of ourselves, we first need to assign members to the project.  If you have submitted your ``GitHub`` username, you would have been added to the repository already. Please clone the repository by issuing the command
+
+```shell
+$ > git clone http://github.com/thewhyoffry/bifblast
+```
+Navigate to the directory and switch to the ``tutorial`` branch.  
+
+```shell
+$ > git checkout tutorial
+```
+
+The ``MAINTAINERS.md`` file is located in the root folder of the repo.  Add your name before the ``#Roles`` section in the format: 
+
+* NAME - GitHub name
+
+The asterisk needs to be included. If your name is there, but some of the info is ... wrong .. feel free to change it.  Remember three steps after editing the file:
+
+```shell
+$ bifblast > git add MAINTAINERS.md
+$ bifblast > git commit -m "Added [githubname] to MAINTAINERS.md"
+$ bifblast > git push origin tutorial # <-- do not use the ``master`` branch
+```
+
+Some of you will encounter issues with the ``push`` step.  In this event, pull the repository and resolve (if not done automatically) the conflicts with ``git mergetool``. 
+
+
+
+
 
