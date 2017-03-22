@@ -275,7 +275,7 @@ All that is now #bob
 
 ...you want.  Do the commit and save the file.  You cannot use "Save As..." in this case.  Commit your changes and push the master branch to the repo.
 
-![kdiff3mergechoose](images/guide2_gitmerge_kdiff3_choose.png)
+![kdiff3mergechoose](images/guide2_gitmerge_kdiff3choose.png)
 
 
 ```shell
