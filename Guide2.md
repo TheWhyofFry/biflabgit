@@ -23,6 +23,37 @@ To illustrate this, we'll use three copies of imaginary commits (in the data/gui
  * ``you.txt`` - Changes made to ``commit1.txt`` by *you*.
 
 
+*commit1.txt*         |  *bob.txt*             |  *you.txt*
+----------------------|------------------------|-------------------------------------------
+All that you touch    |  All that you touch    |  All that you touch
+All that you see      |  All that you see      |  All that you see
+All that you taste    |  All that you taste    |  All that you taste
+All you feel          |  All you feel          |  All you feel
+All that you love     |  All that you love     |  All that you love
+All that you hate     |  All that you hate     |  All that you hate
+All you distrust      |  All you distrust      |  All you distrust
+All you save          |  All you save          |  All you save
+All that you give     |  All that you give     |  All that you give
+All that you deal     |  All that you deal     |  All that you deal
+All that you buy      |  All that you buy      |  All that you buy
+beg, borrow or steal  |  beg, borrow or steal  |  beg, borrow or steal
+All you create        |  All you create        |  All you create
+All you destroy       |  All you destroy       |  All you destroy
+All that you do       |  All that you do       |  All that you do
+All that you say      |  All that you say      |  All that you say
+All that you eat      |  All that you eat      |  All that you eat
+everyone you meat     |  everyone you meet     |  everyone you meet
+All you dislike       |  All that you slight   |  All that you slight
+everyone you fight    |  everyone you fight    |  everyone you fight
+                      |  All that is now       |  All that's now
+                      |  All that is gone      |  All that is gone
+                      |  All that's to come    |  All that's to come
+                      |                        |  And everything under the sun is in tune
+                      |                        |  But the sun is eclipsed by the moon.
+                      |                        |  There is no dark side of the moon really.
+                      |                        |  Matter of fact it's all dark.
+
+
 First, download the tool "KDiff3" [here](https://sourceforge.net/projects/kdiff3/files/latest/download). This tool will help with the visualization and resolving conflicts in the edit.  Download the respective files, ``commit1.txt``, ``bob.txt`` and ``you.txt`` to a location of your choosing. Open up a terminal and navigate to the folder containing these files - preferably have a new folder that does not contain any other files.  You can also clone this guide's repository and navigate to the ``data/guide2`` folder.  From the command line (if you're using bash):
 
 ```shell
@@ -31,7 +62,7 @@ $ biflabgit/data/guide2> kdiff3 commit1.txt bob.txt you.txt
 
 The first parameter is the ``base`` file, the copy of the file right at the beginning that you and Bob both had. The second is Bob's edit and the third is yours.  The order is important, since it is _your_ file that will contain the conflict resolved version in the end. After ``KDiff3`` starts up it will present you with three columns. 
 
-![kdiff3](images/guide3_kdiff3.png)
+![kdiff3](images/guide2_kdiff3.png)
 
 The column order follows the order of the file parameters you've given.  The job here is for you to _merge_ the changes into one file, a final version of the edit.  In the majority of cases, the merges can be auto-resolved.  Click on the right-most column (the one for ``you.txt``). Click on the ``Merge -> Merge Current file`` menu option.  ``KDiff3`` will report that there are four conflicts in the file. It could auto-resolve three out of four. 
 
