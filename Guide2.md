@@ -45,13 +45,13 @@ All that you eat      |  All that you eat      |  All that you eat
 everyone you meat     |  everyone you meet     |  everyone you meet
 All you dislike       |  All that you slight   |  All that you slight
 everyone you fight    |  everyone you fight    |  everyone you fight
-                      |  All that is now       |  All that's now
-                      |  All that is gone      |  All that is gone
-                      |  All that's to come    |  All that's to come
-                      |                        |  And everything under the sun is in tune
-                      |                        |  But the sun is eclipsed by the moon.
-                      |                        |  There is no dark side of the moon really.
-                      |                        |  Matter of fact it's all dark.
+.                     |  All that is now       |  All that's now
+.                     |  All that is gone      |  All that is gone
+.                     |  All that's to come    |  All that's to come
+.                     | .                      |  And everything under the sun is in tune
+.                     | .                      |  But the sun is eclipsed by the moon.
+.                     | .                      |  There is no dark side of the moon really.
+.                     | .                      |  Matter of fact it's all dark.
 
 
 First, download the tool "KDiff3" [here](https://sourceforge.net/projects/kdiff3/files/latest/download). This tool will help with the visualization and resolving conflicts in the edit.  Download the respective files, ``commit1.txt``, ``bob.txt`` and ``you.txt`` to a location of your choosing. Open up a terminal and navigate to the folder containing these files - preferably have a new folder that does not contain any other files.  You can also clone this guide's repository and navigate to the ``data/guide2`` folder.  From the command line (if you're using bash):
