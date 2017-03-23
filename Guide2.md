@@ -293,7 +293,8 @@ Hit return to start merge resolution tool (kdiff3): [press enter]
 Well, something looks familiar here.  Again, most of the conflicts have been resolved, but it's up to you to choose which commit, the local (``you``) or "remote" (not really remote, because we still have the master commit locally, but just humour yourself) version of the pesky line
 
 > All that's now #you 
-All that is now #bob
+
+> All that is now #bob
 
 ...you want.  . Note also that your (local) version is now in column B, so if you choose Bob's changes, you need to select column C, because this is the most recent version of the file in the repo. Do the commit and save the file.  You cannot use "Save As..." in this case.  Commit your changes and push the master branch to the repo.
 
