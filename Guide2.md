@@ -295,7 +295,7 @@ Well, something looks familiar here.  Again, most of the conflicts have been res
 > All that's now #you 
 All that is now #bob
 
-...you want.  Do the commit and save the file.  You cannot use "Save As..." in this case.  Commit your changes and push the master branch to the repo.
+...you want.  . Note also that your (local) version is now in column B, so if you choose Bob's changes, you need to select column C, because this is the most recent version of the file in the repo. Do the commit and save the file.  You cannot use "Save As..." in this case.  Commit your changes and push the master branch to the repo.
 
 ![kdiff3mergechoose](images/guide2_gitmerge_kdiff3choose.png)
 
@@ -303,20 +303,21 @@ All that is now #bob
 ```shell
 
 simplerepo > git commit -m "Added you"
-simplerepo > git push origin master #The default should still be master
+simplerepo > git push origin master 
 ```
 
-All done! You should repeat this exercise with variations of the lyrics.  Get other lyrics/text to play with.  Look at the version histories of the files you add/edit and marvel at the beauty of the commit!
+All done! You should repeat this exercise with variations of the lyrics.  Get other lyrics/text to play with.  Look at the version histories of the files you add/edit and marvel at the beauty of the commit!  When you're done and satisfied, you can delete the branches ``bob`` and ``you``. It is a good idea to delete branches that are not needed anymore, so your repo remains tidy.
+
+```shell
+$ simplerepo > git branch -d you
+$ simplerepo > git branch -d bob
+```
 
 
 
 # Bifblast!
 
-The next part of the tutorial is a
-
-# Adding your name to MAINTAINERS.md
-
-Bifblast is the lab project we'll be working on.  It will be a BLAST server simlar to [SequenceServer](http://sequenceserver.com/). A simple description of the project:
+The last part of this guide will revolve around you adding your names to the ``MAINTAINERS.md`` file we will be using as an overview of people involved in the BifBlast project. It will be a BLAST server simlar to [SequenceServer](http://sequenceserver.com/). A simple description of the project:
 
 > BifBlast is a web-based BLAST that allows users to create a BLAST database of an arbitrary set of sequences and then to BLAST sequences against this created database
 
@@ -343,8 +344,7 @@ $ bifblast > git commit -m "Added [githubname] to MAINTAINERS.md"
 $ bifblast > git push origin tutorial # <-- do not use the ``master`` branch
 ```
 
-Some of you will encounter issues with the ``push`` step.  In this event, pull the repository and resolve (if not done automatically) the conflicts with ``git mergetool``. 
-
+Some of you will encounter issues with the ``push`` step.  In this event, pull the repository and resolve (if not done automatically) the conflicts with ``git mergetool``.  You're allowed to make mistakes.
 
 
 
