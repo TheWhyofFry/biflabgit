@@ -154,7 +154,7 @@ It would defeat the purpose of ``Git`` to make each contributor to the ``commit1
 In the previous guide, you were asked to make a repository called ``simplerepo``. Copy the ``commit1.txt``, ``bob.txt`` and ``you.txt`` files to a folder called ``lyrics`` in your ``simplerepo``.  Add the files to the repository, perform a commit and push it to your remote repo.  If you're stuck, refer to the previous guide.  A refresher is never a bad idea :-)
 
 ```shell
-$ simplerepo > git add simplerepo/*.txt
+$ simplerepo > git add lyrics/*.txt
 $ simplerepo > git commit -m "Added lyrics files"
 $ simplerepo > git push # <<- if this doesn't work, try git push -u remote origin 
 ```
