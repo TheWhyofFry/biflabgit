@@ -87,7 +87,7 @@ $:~/Sources/git/simplerepo> cat README.md
 ```
 
 
-##Adding files to the staging area
+## Adding files to the staging area
 We need to add this file to the repository. The workflow of adding files to the repository, is:
 
 
@@ -122,7 +122,7 @@ There are several components to this message.
 * *``new file:   README.md``* : The file we just added to the staging area
 
 
-##Commiting the changes to the repository
+## Commiting the changes to the repository
 To fully integrate this file with the repository (making the changes for realsies) we need to issue the ``git commit``. The ``commit`` will _commit_ these changes we've made to the _repository_. 
 
 ```shell
@@ -138,7 +138,7 @@ If you go to the repository on GitHub, you'll notice that it is still empty.  We
 $:~/Sources/git/simplerepo> git remote rm origin
 ```
 
-##Adding a remote repository
+## Adding a remote repository
 
 The ``git remote add`` command is used to add a remote repository where the changes will be _pushed_ to. 
 
@@ -148,7 +148,7 @@ $:~/Sources/git/simplerepo> git remote
 origin
 ```
 
-##Pushing the changes to the remote repository 
+## Pushing the changes to the remote repository 
 Great, now we've added a remote repository. The changes can be pushed to the remote github.  The ``git push`` command needs a _origin_ and _branch_ of what needs to be committed. It is also possible to invoke the ``-u`` parameter after ``push`` to save the default _remote orgin_ so that with future commits, just using ``git push`` will suffice.  You will be asked for a username and password.  These are the credentials you use to login to GitHub.  With each push, you will be asked to do this by default. There are ways for git to remember your credentials.  For brevity, this will be covered in another guide.
 
 ```
