@@ -187,7 +187,9 @@ Then, install BioPython as you did before.  There should (hopefully) be no error
 
 ### Performing arbitrary BLASTs using BioPython
 
-Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself
+Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself.
+
+If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. 
 
 ### Parsing the results
 
