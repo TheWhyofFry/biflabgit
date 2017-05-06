@@ -33,16 +33,19 @@ The Biopython package already provides most of the functionality for our project
 
 Lets look at the general structure of our core package and discuss each file in turn. 
 
-```shell
-
-	bifblast/blastdbgen.py
-	bifblast/blastquery.py
-	bifblast/blastparser.py
-	bifblast/blastdbsqlite.py
-
-	bifblast/__init__.py
-	bifblast/__main__.py
-
+```bash
+.
+├── bifblast
+│   ├── blastargparser.py
+│   ├── blastdbgen.py
+│   ├── blastdbsqlite.py
+│   ├── blastparser.py
+│   ├── blastquery.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   └── setup.py
+├── MAINTAINERS.md
+└── README.md
 
 ```
 
@@ -60,7 +63,7 @@ As far as I know (waiting for the egg on my face) there is no direct way to crea
 
 #### blastdbquery.py
 
-This module will facilitate the execution of BLAST queries.  Essentially, a function will be written that can execute the query (via BioPython) but also handle where the raw results (before parsing) are to be stored. There should be an option for the user to get a raw string output or output the results to a file.  While there can be an option choosing what format the output should be, the default needs to be XML, since it can convert to any other format (e.g. tab-delimited).
+This module will facilitate the execution of BLAST queries.  Essentially, a function will be written that can execute the query (via BioPython) but also handle where the raw results (before parsing) are to be stored. There should be an option for the user to get a raw string output or output the results to a file.  While there can be an option choosing what format the output should be, the default needs to be XML, since it can convert to any other format (e.g. tab-delimited).  As with ``blastdbgen``, sequences need to be validated as valid FASTA. 
 
 #### blastparser.py
 
@@ -68,24 +71,36 @@ This module will parse raw BLAST results.  It will contain functions that can bo
 
 The ``pandas`` Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.
 
+Ideally, this module should also include a summary statistic that includes:
+	* Number of hits found per BLAST query
+	* Total coverage of the BLAST query 
+
 #### blastdbsqlite.py
 
-Not absolutely necessary for the core module to succeed, but given that we eventually want a web interface for this project, it seems prudent to keep a structured record of all the BLAST databases that have been created.  This allows the user to access previously created BLAST databases.
+Not absolutely necessary for the core module to succeed, but given that we eventually want a web interface for this project, it seems prudent to keep a structured record of all the BLAST databases that have been created.  This allows the user to access previously created BLAST databases using a key and a reference BLAST database.  This module will not be assigned to anyone per se, but if you would like to work on this, let me know.  I'd suggest you read up on the [SqlAlchemy](https://www.sqlalchemy.org) module.
 
 #### ``__init__.py`` and ``__main__.py``
 
 These two files are necessary for packaging our module.  The ``__init__.py`` both indicates that the ``bifblast`` directory should be treated as a module and the files therein can be imported as ``from bifblast import blastdbgen``, ``import bifblast.blastdbgen`` etc.  It also allows some module initialization (and other packaging functions). The ``__main__.py`` file helps with the execution of the module as a command.  Subsequent lectures will delve into more detail.
 
+#### ``setup.py``
+
+This file will contain the necessary functions to setup/install the package. 
 
 
 
 
+## Small examples to get started
 
-
+To help you get started, we'll look at some of the basic interfaces to BioPython as well as creating a BLAST database from the command line.  The code will generally follow the BioPython [cookbook](http://biopython.org/DIST/docs/tutorial/Tutorial.html).  These examples are merely to help you get familiar with everything.  While your code may look similar in the end, please try not to copy-and-paste it.  
 
 
 
 ### Creating a BLAST database
+
+Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](). Download the relevant file for your operating system and install.  These tools are also essential for BioPython's local BLAST functionality.
+
+
 
 ### Performing arbitrary BLASTs
 
