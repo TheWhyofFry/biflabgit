@@ -4,15 +4,15 @@ This documentation is a primer for BifBlast! Herein I will list the goals and or
 
 
 # Goals
-	* Develop a core backend that can:
-		* Create a BLAST database from a list of sequences
-		* Perform arbitrary blasts against this database
-		* Parse the results
-		* Keep a reference of the created BLAST databases in a SQLite database
-		* Allow the module to be executed as a stand-alone application
-			* e.g. ``python -m bifblast --createdb MYBLASTDB --sequences MYSEQUENCES --dbtype nt``
-	* Transform this into a neat Python package
-	* Continuously update the Git repository
+* Develop a core backend that can:
+	* Create a BLAST database from a list of sequences
+	* Perform arbitrary blasts against this database
+	* Parse the results
+	* Keep a reference of the created BLAST databases in a SQLite database
+	* Allow the module to be executed as a stand-alone application
+		* e.g. ``python -m bifblast --createdb MYBLASTDB --sequences MYSEQUENCES --dbtype nt``
+* Transform this into a neat Python package
+* Continuously update the Git repository
 
 
 ## Core development
