@@ -86,7 +86,7 @@ These two files are necessary for packaging our module.  The ``__init__.py`` bot
 #### ``setup.py``
 
 This file will contain the necessary functions to setup/install the package. 
-
+<p>Hello</p>
 
 
 
@@ -123,31 +123,75 @@ You'll see a bunch of files that were created by the ``makeblastdb`` command. Wh
 
 ### Installing BioPython (and packages in general)
 
-OK, let's backtrack a bit. If you are unsure how to install Python packages, continue to read this section.  If you are comfortable installing packages, you may skip to the next section. Python packages, as stated, are a collection of files that provide functionality beyond the basic Python install.  In our case, we want to install BioPython. The ``pip`` command is used to install Python packages.  Usually, ``pip install biopython`` should suffice. However, many operating systems nowadays come with different versions of Python.  We will be using Python 2.7.  If you installed BioPython and it still appears missing, consider using ``pip2.7 install biopython``.  
+OK, let's backtrack a bit. If you are unsure how to install Python packages, continue to read this section.  If you are comfortable installing packages, you may skip to the next section. Python packages, as stated, are a collection of files that provide functionality beyond the basic Python install.  In our case, we want to install BioPython. The ``pip`` command is used to install Python packages.  Usually, ``pip install biopython`` should suffice. However, many operating systems nowadays come with different versions of Python.  We will be using Python 2.7.  If you installed BioPython and it still appears missing, consider using ``pip2.7 install biopython``. There is another reason why it can b
 
 If you're using the lab PCs, you may need some extra configurations in order to get an internet connection.  I can't put the details on a public guide, so feel free to ask me :-) 
 
 Note that using ``pip install`` will install a package *system wide*.  This means that it will be accessible to all users that can log in to your PC.  In order for it to work, you will need Adminsitrative privileges.  So on your lab PCs, you would need to execute ``sudo pip install biopython``.  If you would like to not install it system wide, you may use ``sudo pip install --user biopython``.  This will install the packages in the home folder. For the time being, I would suggest installing it system wide instead of as a local user.
 
-You will notice that BioPython also installs some other dependencies that it requires.  Wait for the installation to be complete.  To test it, you can execute the following in the python command line interpreter (just start python without any files).
+Generally, packages that have dependencies, i.e. other packages that need to be installed for them to work, grab and install them too.  BioPython has a little exception, which we will see after attempting to install BioPython.
+
+
+
 
 ```bash
+
+$ > pip2.7 install biopython
+Collecting biopython
+  Downloading biopython-1.69.tar.gz (15.4MB)
+    100% |████████████████████████████████| 15.4MB 43kB/s 
+Building wheels for collected packages: biopython
+....
+
 
 $ > python
 >>> import Bio.Blast
 ```
 
-If all went well, there shouldn't be any errors.
+If all went well, there shouldn't be any errors.  Ahem, except for a moaning by BioPython about "NumPy" not being installed and that it recommends installing NumPy prior to installing BioPython.  NumPy is a large python package that contains a multitude of methods and classes that facilitate the processing of numerical data in python. So let's install ``NumPy`` and then reinstall ``BioPython``. Please note that if you _*did not get an error about numpy*_, that's OK.
+
+```shell
+
+$ > sudo pip install numpy #Install NumPy
+Collecting numpy
+  Downloading numpy-1.12.1-cp27-cp27mu-manylinux1_x86_64.whl (16.5MB)
+    100% |████████████████████████████████| 16.5MB 88kB/s 
+Installing collected packages: numpy
+
+$ > sudo pip uninstall biopython
+....
+Proceed (y/n)? y 
+Successfully uninstalled biopython-1.69
+
+$ > pip install biopython
+Collecting biopython
+  Using cached biopython-1.69.tar.gz
+Building wheels for collected packages: biopython
+  Running setup.py bdist_wheel for biopython ... done
+
+```
+
+
+
+If do not have numpy installed, you can do so with the command:
+
+```shell
+$ > sudo pip install numpy
+
+```
+
+Then, install BioPython as you did before.  There should (hopefully) be no errors :-) If you do get some errors trying out the commands, check if you prefixed the ``pip`` command with ``sudo``. Alternatively, use the ``pip install --user biopython`` command.
 
 
 
 
 ### Performing arbitrary BLASTs using BioPython
 
-
+Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself
 
 ### Parsing the results
 
 ### Keep a reference of the created BLAST databases in a SQLite database
 
 ### Allow the module to be executed as a stand-alone application
+
