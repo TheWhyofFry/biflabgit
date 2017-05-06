@@ -55,9 +55,9 @@ Lets look at the general structure of our core package and discuss each file in 
 
 This file will handle the blastdb generation queries.  It will accept a file as input with options stating whether it is a protein or nucleotide BLAST database.  While this seems trivial, we need to take a few things into account:
 	
-	* The input file must be in _valid_ FASTA format
-	* The headers of the FASTA entries may not include escape characters (such as tab)
-	* An option should exist to automatically determine if the input sequences are protein or nucleotide sequences (within reason)
+* The input file must be in _valid_ FASTA format
+* The headers of the FASTA entries may not include escape characters (such as tab)
+* An option should exist to automatically determine if the input sequences are protein or nucleotide sequences (within reason)
 
 As far as I know (waiting for the egg on my face) there is no direct way to create a blast database from wihthin BioPython. To this end, we will need to create a function that interfaces with the NCBI BLAST+ suite to create a blast database for us. From a usage perspective, the BLAST database generation should happen via a single function call.
 
@@ -72,8 +72,8 @@ This module will parse raw BLAST results.  It will contain functions that can bo
 The ``pandas`` Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.
 
 Ideally, this module should also include a summary statistic that includes:
-	* Number of hits found per BLAST query
-	* Total coverage of the BLAST query 
+* Number of hits found per BLAST query
+* Total coverage of the BLAST query 
 
 #### blastdbsqlite.py
 
