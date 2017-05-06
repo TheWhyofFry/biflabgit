@@ -98,8 +98,15 @@ To help you get started, we'll look at some of the basic interfaces to BioPython
 
 ### Creating a BLAST database
 
-Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](). Download the relevant file for your operating system and install.  These tools are also essential for BioPython's local BLAST functionality.
+Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](./data/test.fsa) file for this exercise, although you can use your own FASTA file. 
 
+
+* Creating a database
+```bash
+$ > makeblastdb -in test.fsa -dbtype nucl -out test         
+... 
+$ > blastn -query test.fsa -db test # Just to check. 				....
+```
 
 
 ### Performing arbitrary BLASTs
