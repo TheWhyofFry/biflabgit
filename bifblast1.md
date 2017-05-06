@@ -100,16 +100,51 @@ To help you get started, we'll look at some of the basic interfaces to BioPython
 
 Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](./data/test.fsa) file for this exercise, although you can use your own FASTA file. 
 
+The ``makeblastdb`` command is used to create BLAST databases.  You need to specify at least an input FASTA file with the ``-in`` flag (test.fsa), the type of database (nucleotide/protein) with the ``-dbtype`` flag. The ``-out`` flag is used to name the output database, which will act as a reference when using it in a BLAST search.
+
 
 * Creating a database
 ```bash
 $ > makeblastdb -in test.fsa -dbtype nucl -out test         
 ... 
-$ > blastn -query test.fsa -db test # Just to check. 				....
+$ > blastn -query test.fsa -db test # Just to check. 
+
+$ > ls -l test*
+
+-rw-r--r-- 1 werner.local users 2199 May  4 08:13 test.fsa
+-rw-r--r-- 1 werner.local users  276 May  4 08:15 test.nhr
+-rw-r--r-- 1 werner.local users  104 May  4 08:15 test.nin
+-rw-r--r-- 1 werner.local users  524 May  4 08:15 test.nsq
+
 ```
 
+You'll see a bunch of files that were created by the ``makeblastdb`` command. When referencing the databse, you need to just use the name ``test``.  If you don't include a name, the ``test`` file will include the ``.fsa`` suffix (so test.nin would be test.fsa.nin) and you'll need to do a ``blastn`` query with ``-db test.fsa``.
 
-### Performing arbitrary BLASTs
+
+### Installing BioPython (and packages in general)
+
+OK, let's backtrack a bit. If you are unsure how to install Python packages, continue to read this section.  If you are comfortable installing packages, you may skip to the next section. Python packages, as stated, are a collection of files that provide functionality beyond the basic Python install.  In our case, we want to install BioPython. The ``pip`` command is used to install Python packages.  Usually, ``pip install biopython`` should suffice. However, many operating systems nowadays come with different versions of Python.  We will be using Python 2.7.  If you installed BioPython and it still appears missing, consider using ``pip2.7 install biopython``.  
+
+If you're using the lab PCs, you may need some extra configurations in order to get an internet connection.  I can't put the details on a public guide, so feel free to ask me :-) 
+
+Note that using ``pip install`` will install a package *system wide*.  This means that it will be accessible to all users that can log in to your PC.  In order for it to work, you will need Adminsitrative privileges.  So on your lab PCs, you would need to execute ``sudo pip install biopython``.  If you would like to not install it system wide, you may use ``sudo pip install --user biopython``.  This will install the packages in the home folder. For the time being, I would suggest installing it system wide instead of as a local user.
+
+You will notice that BioPython also installs some other dependencies that it requires.  Wait for the installation to be complete.  To test it, you can execute the following in the python command line interpreter (just start python without any files).
+
+```bash
+
+$ > python
+>>> import Bio.Blast
+```
+
+If all went well, there shouldn't be any errors.
+
+
+
+
+### Performing arbitrary BLASTs using BioPython
+
+
 
 ### Parsing the results
 
