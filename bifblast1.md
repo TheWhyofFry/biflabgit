@@ -172,14 +172,6 @@ Building wheels for collected packages: biopython
 ```
 
 
-
-If do not have numpy installed, you can do so with the command:
-
-```shell
-$ > sudo pip install numpy
-
-```
-
 Then, install BioPython as you did before.  There should (hopefully) be no errors :-) If you do get some errors trying out the commands, check if you prefixed the ``pip`` command with ``sudo``. Alternatively, use the ``pip install --user biopython`` command.
 
 
@@ -190,6 +182,20 @@ Then, install BioPython as you did before.  There should (hopefully) be no error
 Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself.
 
 If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. 
+
+
+<iframe src="inline/blastquery.html"></iframe>
+
+```python
+>>> from Bio.Blast.Applications import NcbiblastnCommandline
+>>> bc = NcbiblastnCommandline(query="test.fsa", db="test", evalue=0.001, outfmt=5)
+>>> print bc
+blastn -outfmt 5 -query test.fsa -db test -evalue 0.001
+>>> output, error = bc()
+>>> output[:100]
+...nDOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.n'
+
+```
 
 ### Parsing the results
 
