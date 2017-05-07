@@ -183,20 +183,18 @@ Assuming you have BioPython installed and your BLAST database has been created, 
 
 If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. 
 
-<div>Hello</div>
-<iframe src="inline/blastquery.html"></iframe>
-
 ```python
->>> from Bio.Blast.Applications import NcbiblastnCommandline
->>> bc = NcbiblastnCommandline(query="test.fsa", db="test", evalue=0.001, outfmt=5)
->>> print bc
-blastn -outfmt 5 -query test.fsa -db test -evalue 0.001
->>> output, error = bc()
->>> output[:100]
-...nDOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.n'
-
+from Bio.Blast.Applications import NcbiblastnCommandline
+bc = NcbiblastnCommandline(query="test.fsa", db="test", evalue=0.001, outfmt=5)
+print bc
+output, error = bc()
+print output[:100]
 ```
-
+```
+    blastn -outfmt 5 -query test.fsa -db test -evalue 0.001
+    <?xml version="1.0"?>
+    <!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.n
+```
 ### Parsing the results
 
 ### Keep a reference of the created BLAST databases in a SQLite database
