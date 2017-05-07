@@ -3,34 +3,29 @@
 This documentation is a primer for BifBlast! Herein I will list the goals and organization of the code/modules we will develop as a group.  
 
 
-# Goals
-* Develop a core backend that can:
-	* Create a BLAST database from a list of sequences
-	* Perform arbitrary blasts against this database
-	* Parse the results
-	* Keep a reference of the created BLAST databases in a SQLite database
-	* Allow the module to be executed as a stand-alone application
-		* e.g. ``python -m bifblast --createdb MYBLASTDB --sequences MYSEQUENCES --dbtype nt``
-* Transform this into a neat Python package
-* Continuously update the Git repository
+# General usage of BioPython and NCBI BLAST utilities
+
+To get yourself familiar with essential concepts needed in this project, we'll be going over a few basic topics.  First, we'll look at python modules (what they are) and then delve into completing simple BLAST tasks such as database generation and queries. Next, we'll see how you can use BioPython to facilitate this process. 
 
 
-## Core development
+## Brief introduction (recap?) of Python modules
 
-## Small introduction (recap?) of Python modules
+Python modules allow the encapsulation of a set of functions and classes for re-use. It would be very redundant to copy all the code needed for the ``math`` module into your code to access the functions.  In the simplest case, you can have a single python file with a bunch of functions, ``myfunctions.py``.  In order for another script to use it, it has to import this file with ``import myfunctions``.  Python has a set of paths where it looks for functions (including the current path) and gives an error if it didn't find the functions in the predefined path.  You could, of course, add paths for python to search, but this gets very messy very quickly.  This is why when you install python modules, they are put in a central location.  This location may be accessible system-wide or in a directory that exists user's home folder. 
 
-Python modules allow the encapsulation of a set of functions and classes for re-use. It would be very redundant to copy all the code needed for the ``math`` module into your code to access the functions.  In the simplest case, you can have a single python file with a bunch of functions, ``myfunctions.py``.  In order for another script to use it, it has to import this file with ``import myfunctions``.  Python has a set of paths where it looks for functions and gives an error if it didn't find the functions in the predefined path.  You could, of course, add paths for python to search, but this gets very messy very quickly.  This is why when you install python modules, they are put in a central location.  This location may be accessible system-wide or in a local folder. Usually, python stores (third-party) installed modules in a ``site-packages`` folder, so when you import something it will look inside this folder for the appropriate module. So if you enter ``import Bio`` it will import the ``site-packages/Bio`` module that exists as a subfolder.  Modules may also contain ``submodules`` which can be imported using ``.`` as a separator, for instance ``import Bio.Seq``.  To avoid using the ``Bio.`` prefix, one can also use ``from Bio import Seq`` and then access the ``Seq`` modules contents with ``Seq.``. 
+Usually, python stores (third-party) installed modules in a ``site-packages`` folder, so when you import something it will look inside this folder for the appropriate module. So if you enter ``import Bio`` it will import the ``site-packages/Bio`` module that exists as a subfolder.  Modules may also contain ``submodules`` which can be imported using ``.`` as a separator, for instance ``import Bio.Seq``.  To avoid using the ``Bio.`` prefix, one can also use ``from Bio import Seq`` and then access the ``Seq`` modules contents with ``Seq.``. 
+
+Methods for installing python modules are discussed in conjunction with usage examples of BioPython in subsequent sections. 
 
 
-## Small examples to get started
+## Examples to get started
 
-To help you get started, we'll look at some of the basic interfaces to BioPython as well as creating a BLAST database from the command line.  The code will generally follow the BioPython [cookbook](http://biopython.org/DIST/docs/tutorial/Tutorial.html).  These examples are merely to help you get familiar with everything.  While your code may look similar in the end, please try not to copy-and-paste it.  
+To help you get started, we'll look at some of the basic interfaces to BioPython as well as creating a BLAST database from the command line.  The code will generally follow the BioPython [cookbook](http://biopython.org/DIST/docs/tutorial/Tutorial.html).  These examples are merely to help you get familiar with everything.  While your code may look similar in the end, please try not to copy-and-paste from here.  
 
 
 
 ### Creating a BLAST database
 
-Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](./data/test.fsa) file for this exercise, although you can use your own FASTA file. 
+Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](http://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](./data/test.fsa) file for this exercise, although you can use your own FASTA file. 
 
 The ``makeblastdb`` command is used to create BLAST databases.  Specify at least an input FASTA file with the ``-in`` flag (test.fsa), the type of database (nucleotide/protein) with the ``-dbtype`` flag. The ``-out`` flag is used to name the output database, which will act as a reference when using it in a BLAST search.
 
@@ -104,7 +99,7 @@ Building wheels for collected packages: biopython
 ```
 
 
-Then, install BioPython as you did before.  There should (hopefully) be no errors :-) If you do get some errors trying out the commands, check if you prefixed the ``pip`` command with ``sudo``. Alternatively, use the ``pip install --user biopython`` command.
+Then, reinstall BioPython as you did before (you can streamline the process after installing NumPy with ``pip install --force-reinstall biopython``).  There should (hopefully) be no errors :-) If you do get some errors trying out the commands, check if you prefixed the ``pip`` command with ``sudo``. Alternatively, use the ``pip install --user biopython`` command.
 
 
 
@@ -171,7 +166,29 @@ Sbjct:       1 GAATTCCCGCTACAGGGGGGGCCTGAGGCACTGCAGAAAGTGGGC...CAA 720
 
 ```
 
-The parser yield a ``generator`` object, ``parsed_result``.  Loosely, a generator object allows you to retrieve information (alignments in this case) one by one instead of getting all the results as one.  This is useful if you intend to do massive BLAST queries. If you would like to get all the results into a list anyway, you can get all the generator has to give by directly calling ``list(parsed_result)``.  There are three sequences in the file, and therefore three alignments are to be expected. The ``r`` variable is a placeholder for the first element in ``blast_result``. The ``a`` variable is the first alignment of the BLAST result and ``h`` is the first ``High Scoring Pair (HSP)`` of that result (i.e. the first hit). You can print the alignments/hits to give you a good visual representation.  Refer to the BioPython cookbook on [parsing the results](http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc93). 
+The parser yield a ``generator`` object, ``parsed_result``.  Loosely, a generator object allows you to retrieve information (alignments in this case) one by one instead of getting all the results as one.  This is useful if you intend to do massive BLAST queries. If you would like to get all the results into a list anyway, you can get all the generator has to give by directly calling ``list(parsed_result)``.  There are three sequences in the file, and therefore three alignments are to be expected. The ``r`` variable is a placeholder for the first element in ``blast_result``. The ``a`` variable is the first alignment of the BLAST result and ``h`` is the first ``High Scoring Pair (HSP)`` of that result (i.e. the first hit). You can print the alignments/hits to give you a good visual representation.  Refer to the BioPython cookbook on [parsing the results](http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc93). Later on, when the web front-end is created, the more sophisticated aspects of the parser will be utilized.
+
+
+# Core development of BifBlast!
+
+Now that you're semi-familiar with the basic aspects of a local BLAST query and how to use BioPython to submit queries and results, we'll discuss the outline of the BifBlast! project.  The project will be divided into two main parts:
+* Core BLAST module
+* Web front-end.
+
+These two parts need to be separated as it is preferable to keep things modular.  For instance, if you wanted to create your own web front-end, you don't want to be dependent on the original web-front end to start from scratch.  The core module will handle all the finer details of BLAST queries, database generation, parsing etc. The web front-end needs to interface with this core module, but should preferably not contain too much code that could have been included in the core module to start off with. 
+
+
+# Goals
+* Develop a core backend that can:
+	* Create a BLAST database from a list of sequences
+	* Perform arbitrary blasts against this database
+	* Parse the results
+	* Keep a reference of the created BLAST databases in a SQLite database
+	* Allow the module to be executed as a stand-alone application
+		* e.g. ``python -m bifblast --createdb MYBLASTDB --sequences MYSEQUENCES --dbtype nt``
+* Transform this into a neat Python package
+* Continuously update the Git repository
+
 
 
 ### Module overview
@@ -211,15 +228,23 @@ This file will handle the blastdb generation queries.  It will accept a file as 
 
 As far as I know (waiting for the egg on my face) there is no direct way to create a blast database from wihthin BioPython. To this end, we will need to create a function that interfaces with the NCBI BLAST+ suite to create a blast database for us. From a usage perspective, the BLAST database generation should happen via a single function call.
 
+You will need to learn:
+
+* The [argparse](https://docs.python.org/2.7/library/argparse.html) module.
+* The [subprocess](http://sharats.me/the-ever-useful-and-neat-subprocess-module.html) module.
+
+
+
+
 #### blastdbquery.py
 
-This module will facilitate the execution of BLAST queries.  Essentially, a function will be written that can execute the query (via BioPython) but also handle where the raw results (before parsing) are to be stored. There should be an option for the user to get a raw string output or output the results to a file.  While there can be an option choosing what format the output should be, the default needs to be XML, since it can convert to any other format (e.g. tab-delimited).  As with ``blastdbgen``, sequences need to be validated as valid FASTA. 
+This module will facilitate the execution of BLAST queries.  Essentially, a function will be written that can execute the query (via BioPython) but also handle where the raw results (before parsing) are to be stored. There should be an option for the user to get a raw string output or output the results to a file.  While there can be an option choosing what format the output should be, the default needs to be XML, since it can convert to any other format (e.g. tab-delimited).  As with ``blastdbgen``, sequences need to be validated as valid FASTA. It is necessary to consider the possibility of the type of BLAST the user would like to perform (just blastn and blastp for now).  This can be determined automatically from the input sequence.  Consider, howver, that the user may want to do a ``tblastn`` (searching against a nucleotide db using a protein query) or a blastx (searching against a protein db using a nucleotide query).  You do not have to code for this, but make sure that your code can be easily extended to include these options. 
 
 #### blastparser.py
 
 This module will parse raw BLAST results.  It will contain functions that can both parse and selectively extract info from the BLAST hits. Deviating slightly from the pure modular design, it should also be able to call the necessary BioPython functions that allow conversion between the BLAST output formats. 
 
-The ``pandas`` Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.
+The [pandas](http://pandas.pydata.org/) Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.  Make sure the module has built-in function that can filter by at least E-value.  You may include other criteria.
 
 Ideally, this module should also include a summary statistic that includes:
 * Number of hits found per BLAST query
