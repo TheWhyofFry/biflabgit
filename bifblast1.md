@@ -86,7 +86,6 @@ These two files are necessary for packaging our module.  The ``__init__.py`` bot
 #### ``setup.py``
 
 This file will contain the necessary functions to setup/install the package. 
-<p>Hello</p>
 
 
 
@@ -181,7 +180,7 @@ Then, install BioPython as you did before.  There should (hopefully) be no error
 
 Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself.
 
-If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. 
+If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. In the following code, ``bc`` acts as a function that will execute the ``blastn`` command for us.  First, we define ``bc`` with ``NcbiblastnCommandline`` and then run it as a normal function. A tuple is produced as an output.  The first part of the tuple being the actual output (from ``stdout``) and the second part being the error/information output (from ``stderr``). We can directly assign variabled from a touple in the form ``a, b = (0, 1)``.  The ``a`` variable will take on the value ``0`` while the ``b`` variable will take on the value ``1``.
 
 ```python
 from Bio.Blast.Applications import NcbiblastnCommandline
@@ -190,14 +189,56 @@ print bc
 output, error = bc()
 print output[:100]
 ```
+
+The output should yield
 ```
     blastn -outfmt 5 -query test.fsa -db test -evalue 0.001
+
     <?xml version="1.0"?>
     <!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.n
 ```
+
+
+When creating ``bc`` you can add other parameters, such as ``out=test.xml`` that will output the result to a file or ``strand='plus'`` that will only BLAST the positive sense strand of the query.  Feel free to look at the documentation of ``NcbiblastnCommandline`` and ``blastn`` for other parameters.  Play around with them.  What happens when you change the ``outfmt`` parameter to ``7``? For the next part, you need the ``output`` to be in format ``7`` (XML).
+
+
+
+
 ### Parsing the results
 
-### Keep a reference of the created BLAST databases in a SQLite database
+The results produced by ``NcbiblastnCommandline`` cannot directly be interpreted by python other than that the results are a string.  We next need to parse the results.  A parser input text and interprets it intelligently, pushing the results onto a Python object.  So instead of scanning visually through the results, we may use the parser to convert the results into something Python can easily access/manipulate/filter. By default, BLAST will produce an XML formatted output. Although the raw version of the results are not clear to interpret, it makes it easier to parse these results.  The ``NCBIXML`` module in ``Bio.Blast`` acts as a parser of BLAST results.
 
-### Allow the module to be executed as a stand-alone application
+Something to note, is that the ``NCBIXML`` parser assumes that the input would be a file or a file handle. We can trick it into believing the input is a file (even though it's a string) by using the ``StringIO`` module that disguises the string as a file. Of course, we could skip this step if our previous results were directly saved to a file (e.g, if you specified ``out='test.xml'``).
+
+
+```python
+
+>>> from Bio.Blast import NCBIXML
+>>> import StringIO
+>>> output_handle = StringIO.StringIO(output) #Create a file handle of the output string
+>>> parsed_result = NCBIXML.parse(output_handle)
+>>> print parsed_result
+<generator object parse at 0x7f95064d39b0>
+>>> blast_result = list(parsed_result)
+>>> print blast_result
+[<Bio.Blast.Record.Blast at 0x7fb43bfec650>, ... ]
+>>> r = blast_result[0]
+>>> a = r.alignments[0]
+>>> h = a.hsps[0]
+>>> print a
+>>> print h
+```
+```
+gnl|BL_ORD_ID|1 gnl|MYDB|2 this is sequence 2
+           Length = 720
+Score 720 (1330 bits), expectation 0.0e+00, alignment length 720
+Query:       1 GAATTCCCGCTACAGGGGGGGCCTGAGGCACTGCAGAAAGTGGGC...CAA 720
+               |||||||||||||||||||||||||||||||||||||||||||||...|||
+Sbjct:       1 GAATTCCCGCTACAGGGGGGGCCTGAGGCACTGCAGAAAGTGGGC...CAA 720
+
+```
+
+The parser yield a ``generator`` object, ``parsed_result``.  Loosely, a generator object allows you to retrieve information (alignments in this case) one by one instead of getting all the results as one.  This is useful if you intend to do massive BLAST queries. If you would like to get all the results into a list anyway, you can get all the generator has to give by directly calling ``list(parsed_result)``.  There are three sequences in the file, and therefore three alignments are to be expected. The ``r`` variable is a placeholder for the first element in ``blast_result``. The ``a`` variable is the first alignment of the BLAST result and ``h`` is the first ``High Scoring Pair (HSP)`` of that result (i.e. the first hit). You can print the alignments/hits to give you a good visual representation.  Refer to the BioPython cookbook on [parsing the results](http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc93). 
+
+
 
