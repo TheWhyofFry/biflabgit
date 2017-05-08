@@ -25,7 +25,7 @@ To help you get started, we'll look at some of the basic interfaces to BioPython
 
 ### Creating a BLAST database
 
-Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](http://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](./data/test.fsa) file for this exercise, although you can use your own FASTA file. 
+Creating a BLAST database is straightforward.  You will need the [NCBI BLAST+ tools](http://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/). Download the relevant file for your operating system and install (Windows: ``.exe``, Lab PCs: ``.x86_64.rpm``).  These tools are also essential for BioPython's local BLAST functionality.  You would also need a [test](https://raw.githubusercontent.com/TheWhyofFry/biflabgit/master/data/test.fsa) file for this exercise, although you can use your own FASTA file. 
 
 The ``makeblastdb`` command is used to create BLAST databases.  Specify at least an input FASTA file with the ``-in`` flag (test.fsa), the type of database (nucleotide/protein) with the ``-dbtype`` flag. The ``-out`` flag is used to name the output database, which will act as a reference when using it in a BLAST search.
 
