@@ -50,13 +50,13 @@ You'll see a bunch of files that were created by the ``makeblastdb`` command. Wh
 
 ### Installing BioPython (and packages in general)
 
-OK, let's backtrack a bit. If you are unsure how to install Python packages, continue to read this section.  If you are comfortable installing packages, you may skip to the next section. Python packages, as stated, are a collection of files that provide functionality beyond the basic Python install.  In our case, we want to install BioPython. The ``pip`` command is used to install Python packages.  Usually, ``pip install biopython`` should suffice. However, many operating systems nowadays come with different versions of Python.  We will be using Python 2.7.  If you installed BioPython and it still appears missing, consider using ``pip2.7 install biopython``. There is another reason why it can b
+OK, let's backtrack a bit. If you are unsure how to install Python packages, continue to read this section.  If you are comfortable installing packages, you may skip to the [next](#arbitrary-blast) section. Python packages, as stated, are a collection of files that provide functionality beyond the basic Python install.  In our case, we want to install BioPython. The ``pip`` command is used to install Python packages.  Usually, ``pip install biopython`` should suffice. However, many operating systems nowadays come with different versions of Python.  We will be using Python 2.7.  If you installed BioPython and it still appears missing, consider using ``pip2.7 install biopython``. There is another reason why it can b
 
 If you're using the lab PCs, you may need some extra configurations in order to get an internet connection.  I can't put the details on a public guide, so feel free to ask me :-) 
 
 Note that using ``pip install`` will install a package *system wide*.  This means that it will be accessible to all users that can log in to your PC.  In order for it to work, you will need Adminsitrative privileges.  So on your lab PCs, you would need to execute ``sudo pip install biopython``.  If you would like to not install it system wide, you may use ``sudo pip install --user biopython``.  This will install the packages in the home folder. For the time being, I would suggest installing it system wide instead of as a local user.
 
-Generally, packages that have dependencies, i.e. other packages that need to be installed for them to work, grab and install them too.  BioPython has a little exception, which we will see after attempting to install BioPython.
+Packages that have dependencies, i.e. other packages that need to be installed for them to work, grab and install them too.  BioPython is partly dependent on ``Numpy`` but does not automatically install it for you.
 
 
 
@@ -104,11 +104,11 @@ Then, reinstall BioPython as you did before (you can streamline the process afte
 
 
 
-### Performing arbitrary BLASTs using BioPython
+### Performing arbitrary BLASTs using BioPython <a name="arbitrary-blast"></a>
 
 Assuming you have BioPython installed and your BLAST database has been created, we'll delve a little into a basic usage of BioPython by BLASTing a sequences from the ``test`` BLAST database against itself.
 
-If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. In the following code, ``bc`` acts as a function that will execute the ``blastn`` command for us.  First, we define ``bc`` with ``NcbiblastnCommandline`` and then run it as a normal function. A tuple is produced as an output.  The first part of the tuple being the actual output (from ``stdout``) and the second part being the error/information output (from ``stderr``). We can directly assign variabled from a touple in the form ``a, b = (0, 1)``.  The ``a`` variable will take on the value ``0`` while the ``b`` variable will take on the value ``1``.
+If you followed the creation of a BLAST database, you would've noticed the default output of ``blastn`` is similar to the pretty textual outputs you would get when running BLAST on the NCBI. However, we would like to interface with these results.  Now, prior to parsing (processing the results) BioPython generates the command line similarly like what was done earlier in this guide. In the following code, ``bc`` acts as a function (not enitrely true - check if you can figure out why) that will execute the ``blastn`` command for us.  First, we define ``bc`` with ``NcbiblastnCommandline`` and then run it as a normal function. A tuple is produced as an output.  The first part of the tuple being the actual output (from ``stdout``) and the second part being the error/information output (from ``stderr``). We can directly assign variabled from a touple in the form ``a, b = (0, 1)``.  The ``a`` variable will take on the value ``0`` while the ``b`` variable will take on the value ``1``.
 
 ```python
 from Bio.Blast.Applications import NcbiblastnCommandline
@@ -230,7 +230,7 @@ As far as I know (waiting for the egg on my face) there is no direct way to crea
 
 You will need to learn:
 
-* The [argparse](https://docs.python.org/2.7/library/argparse.html) module.
+* The [argparse](https://docs.python.org/2.7/library/argparse.html) module.  Also check [this](https://docs.python.org/2/howto/argparse.html) tutorial and feel ... patriotic.
 * The [subprocess](http://sharats.me/the-ever-useful-and-neat-subprocess-module.html) module.
 
 
@@ -244,7 +244,7 @@ This module will facilitate the execution of BLAST queries.  Essentially, a func
 
 This module will parse raw BLAST results.  It will contain functions that can both parse and selectively extract info from the BLAST hits. Deviating slightly from the pure modular design, it should also be able to call the necessary BioPython functions that allow conversion between the BLAST output formats. 
 
-The [pandas](http://pandas.pydata.org/) Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.  Make sure the module has built-in function that can filter by at least E-value.  You may include other criteria.
+The [pandas](http://pandas.pydata.org/) Python module is great for working with (among other things) tabular data.  BLAST results can be converted to tabular format and if structured appropriately, it will make filtering BLAST results a lot easier, e.g. filtering by E-value, bit score, query hit size etc.  Make sure the module has built-in function that can filter by at least E-value.  You may include other criteria.  How does Pandas fit in? Check the tabular output format of BLAST results and read up a little on pandas.  It is not crucial for you to learn Pandas at this stage, but it would make the filtering process a lot easier. 
 
 Ideally, this module should also include a summary statistic that includes:
 * Number of hits found per BLAST query
@@ -260,7 +260,53 @@ These two files are necessary for packaging our module.  The ``__init__.py`` bot
 
 #### ``setup.py``
 
-This file will contain the necessary functions to setup/install the package. 
+This file will contain the necessary functions to setup/install the package. We'll cover its usage in another tutorial.
+
+
+# Grab the module!
+
+* Right, so it's a bit of a wasteland, but you may get the current commit of the BifBlast! repo. To clone the repo, issue the folling command in a shell:
+
+```shell
+$ > git clone https://github.com/TheWhyofFry/bifblast
+$ > cd bifblast
+$ (master) bifblast >
+```
+
+* Now, switch to the ``development`` branch:
+
+```shell
+$ (master) bifblast > git checkout development
+$ (development) bifblast > 
+```
+
+* Create a new branch for yourself:
+
+```shell
+$ (development) bifblast > git branch test
+# Alternatively, you can be on the master branch and create a test branch from the ``development branch``
+$ (development) bifblast > git branch test development 
+$ (development) bifblast > git checkout test
+$ (test) bifblast >
+```
+
+* Install the package
+
+```shell
+$ (test) bifblast > pip install --user -e bifblast
+```
+
+This will install the ``bifblast`` module that exists in the ``bifblast/bifblast`` folder. The ``-e`` flag is used, so that we can enter ``development`` mode.  Instead of installing the module with actual files, symbolic links are used. Symbolic links act as a reference to a file in another location.  So when you change anything in the ``bifblast/bifblast`` folder, the changes are reflected in the package. 
+
+
+# Contributing
+
+For now, you should not push any changes you make to the remote repository. I haven't put restrictions on the ``development`` branch.  You may (and should) play around with your ``test`` branch.  Even though you have been assigned into groups, I want you all to be familiar with most of the aspects of the project. If you are assigned to developing the ``blastparser`` module, you still should be able to do BioPython-based blast queries. I will formally assign roles to you after our next meeting.
+
+If you have any questions, feel free to ask :-)
+
+
+
 
 
 
