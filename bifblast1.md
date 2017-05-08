@@ -177,6 +177,7 @@ Now that you're semi-familiar with the basic aspects of a local BLAST query and 
 
 These two parts need to be separated as it is preferable to keep things modular.  For instance, if you wanted to create your own web front-end, you don't want to be dependent on the original web-front end to start from scratch.  The core module will handle all the finer details of BLAST queries, database generation, parsing etc. The web front-end needs to interface with this core module, but should preferably not contain too much code that could have been included in the core module to start off with. 
 
+![diagram](images/bifblastflow.svg)
 
 # Goals
 * Develop a core backend that can:
