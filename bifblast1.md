@@ -1,3 +1,23 @@
+- [BifBlast! Introduction](#bifblast--introduction)
+- [General usage of BioPython and NCBI BLAST utilities](#general-usage-of-biopython-and-ncbi-blast-utilities)
+  * [Brief introduction (recap?) of Python modules](#brief-introduction--recap---of-python-modules)
+  * [Examples to get started](#examples-to-get-started)
+    + [Creating a BLAST database](#creating-a-blast-database)
+    + [Installing BioPython (and packages in general)](#installing-biopython--and-packages-in-general-)
+    + [Performing arbitrary BLASTs using BioPython <a name="arbitrary-blast"></a>](#performing-arbitrary-blasts-using-biopython--a-name--arbitrary-blast----a-)
+    + [Parsing the results](#parsing-the-results)
+- [Core development of BifBlast!](#core-development-of-bifblast-)
+- [Goals](#goals)
+    + [Module overview](#module-overview)
+      - [blastdbgen.py](#blastdbgenpy)
+      - [blastdbquery.py](#blastdbquerypy)
+      - [blastparser.py](#blastparserpy)
+      - [blastdbsqlite.py](#blastdbsqlitepy)
+      - [``__init__.py`` and ``__main__.py``](#----init--py---and-----main--py--)
+      - [``setup.py``](#--setuppy--)
+- [Grab the module!](#grab-the-module-)
+- [Contributing](#contributing)
+
 # BifBlast! Introduction
 
 This documentation is a primer for BifBlast! Herein I will list the goals and organization of the code/modules we will develop as a group.  
