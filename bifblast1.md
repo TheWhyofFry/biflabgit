@@ -2,7 +2,7 @@
 
 This documentation is a primer for BifBlast! Herein I will list the goals and organization of the code/modules we will develop as a group.  
 
-[Small annex can be found [here](./bifblastannex.md)
+* Small annex can be found [here](./bifblast1annex.md)
 
 - [General usage of BioPython and NCBI BLAST utilities](#general-usage-of-biopython-and-ncbi-blast-utilities)
   * [Brief introduction (recap?) of Python modules](#brief-introduction--recap---of-python-modules)

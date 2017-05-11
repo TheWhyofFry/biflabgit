@@ -4,7 +4,7 @@
 ## Pakcage installs on your normal PCs
 
 
-First, you need to add an environment variable for your BASH (Shell). Edit the file ``~/.bashrc`` and add the following lines to it:
+First, you need to add an environment variable for your BASH (Shell). Edit the file ``~/.bashrc`` ( ~ is shorthand for ``/home/yourusername`` ) and add the following lines to it:
 
 ```bash
 export proxystring=username:password@intacc.up.ac.za:8080
