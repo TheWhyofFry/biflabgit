@@ -1,4 +1,9 @@
-- [BifBlast! Introduction](#bifblast--introduction)
+# BifBlast! Introduction
+
+This documentation is a primer for BifBlast! Herein I will list the goals and organization of the code/modules we will develop as a group.  
+
+[Small annex can be found [here](./bifblastannex.md)
+
 - [General usage of BioPython and NCBI BLAST utilities](#general-usage-of-biopython-and-ncbi-blast-utilities)
   * [Brief introduction (recap?) of Python modules](#brief-introduction--recap---of-python-modules)
   * [Examples to get started](#examples-to-get-started)
@@ -18,9 +23,6 @@
 - [Grab the module!](#grab-the-module-)
 - [Contributing](#contributing)
 
-# BifBlast! Introduction
-
-This documentation is a primer for BifBlast! Herein I will list the goals and organization of the code/modules we will develop as a group.  
 
 
 # General usage of BioPython and NCBI BLAST utilities
@@ -325,7 +327,6 @@ This will install the ``bifblast`` module that exists in the ``bifblast/bifblast
 For now, you should not push any changes you make to the remote repository. I haven't put restrictions on the ``development`` branch.  You may (and should) play around with your ``test`` branch.  Even though you have been assigned into groups, I want you all to be familiar with most of the aspects of the project. If you are assigned to developing the ``blastparser`` module, you still should be able to do BioPython-based blast queries. I will formally assign roles to you after our next meeting.
 
 If you have any questions, feel free to ask :-)
-
 
 
 
