@@ -76,13 +76,13 @@ The ``HEAD`` points to the most recent commit. What you should note, is that ``r
 
 BUT ... 
 
-The tricky bit of revert is that if we reverted ``commit1`` - 
+The tricky bit of revert is that if we reverted ``commit1`` .... 
 
 ```shell
 $ > git revert 8b1b5f3
 ```
 
-- the general assumption is that this reverts _all_ commits from ``commit1`` onwards.  This is _not_ the case.  It attempts to revert the changes brought about by ``commit1`` while keeping changes of subsequent commits intact.  This is a little tricky, so lets create a new repository. 
+... the general assumption is that this reverts _all_ commits from ``commit1`` onwards.  This is _not_ the case.  It attempts to revert the changes brought about by ``commit1`` while keeping changes of subsequent commits intact.  This is a little tricky, so lets create a new repository. 
 
 ```shell
 
