@@ -12,8 +12,8 @@ Git has many tools to your disposal, and the general ``undoing`` tools are ``rev
 
 You are a new developer to a project, AlphaStar. You contribute code and everything is going smoothly.  Changes are comitted by you, pushed to the repository and everyone rejoices.  You continue the development and add a new feature to the file ``analyzer.py``.  After a couple of commits, you realize that this new code breaks a lot of other parts of the project. You decide that the best course of action is to revert the changes back to the original. Because you have been diligent, you kept a good commit history explaining the changes you made to ``analyzer.py`` with every commit. Great.  So you have two choices, before you push your commits back to the repository.  You can:
 
-	* Change everything back to what is was, without leaving a trace
-	* Change everything back to what is was while keeping track of the changes you made
+* Change everything back to what is was, without leaving a trace
+* Change everything back to what is was while keeping track of the changes you made
 
 The first scenario is typically for a case when you were being silly and it is irrelevant to keep a copy of these changes.  The second scenario is for when you would like to show that ``including feature breaks the code`` and to keep track of parts of the code that could (for instance) be fragile to changes. Typically, when you decide to rewrite the past, you would stick to the first scenario.  For this, you would use ``git reset``.  
 
