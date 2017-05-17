@@ -72,7 +72,9 @@ $ > git log --oneline
 $ > git revert HEAD
 ```
 
-The ``HEAD`` points to the most recent commit. What you should note, is that ``revert`` does not revert _*to*_ the ``commit2`` point (6c34756), it reverts _*that*_ commit, so we're back at ``commit1`` (8b1b4f3). 
+The ``HEAD`` points to the most recent commit. What you should note, is that ``revert`` does not revert _*to*_ the ``commit2`` point (6c34756), it reverts _*that*_ commit, so to the state at ``commit1`` (8b1b4f3). 
+
+BUT ... 
 
 The tricky bit of revert is that if we reverted ``commit1`` - 
 
