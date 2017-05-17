@@ -27,7 +27,7 @@ File1 -> edit2 -> add File1 -> commit2
 
 You can ``reset`` the file to the last commit version in the _staging_ area.  This means that the current file you were working on will not be altered in any way.  So if we did a reset after "add File1" before ``commit2``, the repository will consider ``File1`` to be the ``commit1`` version. In the shell:
 
-``shell
+```shell
 #Edit File1
 $ > git add File1
 $ > git commit -m "commit1"
