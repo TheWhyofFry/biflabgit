@@ -1,4 +1,4 @@
-# Undoing things
+# Slurm - Undoing things 
 
 
 ## Introduction
@@ -15,7 +15,7 @@ You are a new developer to a project, AlphaStar. You contribute code and everyth
 * Change everything back to what is was, without leaving a trace
 * Change everything back to what is was while keeping track of the changes you made
 
-The first scenario is typically for a case when you were being silly and it is irrelevant to keep a copy of these changes.  The second scenario is for when you would like to show that ``including feature breaks the code`` and to keep track of parts of the code that could (for instance) be fragile to changes. Typically, when you decide to rewrite the past, you would stick to the first scenario.  For this, you would use ``git reset``.  
+The first scenario is typically for a case when you were being silly and it is irrelevant to keep a copy of these changes.  The second scenario is for when you would like to show that ``a change you made previously breaks the code`` and to keep track of parts of the code that could (for instance) be fragile to changes. Typically, when you decide to rewrite the past, you would stick to the first scenario.  For this, you would use ``git reset``.  
 
 ### Git ``reset``
 
@@ -74,13 +74,13 @@ $ > git revert HEAD
 
 The ``HEAD`` points to the most recent commit. What you should note, is that ``revert`` does not revert _*to*_ the ``commit2`` point (6c34756), it reverts _*that*_ commit, so we're back at ``commit1`` (8b1b4f3). 
 
-The tricky bit of revert is that if we reverted ``commit1`` from the start - 
+The tricky bit of revert is that if we reverted ``commit1`` - 
 
 ```shell
 $ > git revert 8b1b5f3
 ```
 
-- the general assumption is that this reverts _all_ commits from ``commit1`` onwards.  This is _not_ the case.  It attempts to revert the changes brought about by ``commit1``.  This is a little tricky, so lets create a new repository. 
+- the general assumption is that this reverts _all_ commits from ``commit1`` onwards.  This is _not_ the case.  It attempts to revert the changes brought about by ``commit1`` while keeping changes of subsequent commits intact.  This is a little tricky, so lets create a new repository. 
 
 ```shell
 
@@ -155,7 +155,7 @@ You will notice that the commit for ``Line 3`` has not been reverted.  This is b
 $ > git reset --hard f8e297f #reset to the point before the revert
 $ > git revert --no-commit 0c03424..HEAD
 ```
-This will revert all the commits from "Edit Line 1" onward (HEAD being the most recent commit).  The reason for the ``--no-commit`` parameter in this example, is because _each_ commit will be reverted in turn.  When you use ``--no-commit`` the total reversions are consolidated and you can do a manual commit with an appropriate message. 
+This will revert all the commits from "Edit Line 1" onward (HEAD being the most recent commit).  The reason for the ``--no-commit`` parameter in this example, is because _each_ commit will be reverted in turn and you will have to provide a message for each (there is a workaround suppressing the need to specify a commit message - see if you can find it).  When you use ``--no-commit`` the total reversions are consolidated and you can do a manual commit with an appropriate message. 
 
 ### Why is it cool?
 
