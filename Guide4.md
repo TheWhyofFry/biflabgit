@@ -159,17 +159,16 @@ This will revert all the commits from "Edit Line 1" onward (HEAD being the most 
 
 ### Why is it cool?
 
-Well, undoing disastrous changes is always great.  Both tools, ``git reset`` and ``git revert`` are fantastic in undoing changes.  The majority of the time, you may want to revert a change due to a specific commit, so ``git revert`` is generally preferred, since it only undoes the changes brought about by that specific commit. Also note, that if you ``git reset``, you change the state of the file to a specific commit.  This means all the subsequent changes from that point onwards are lost.  And if you ``git reset --hard`` you will lose _everything_ inbetween.
+Well, undoing disastrous changes is always great.  Both tools, ``git reset`` and ``git revert`` are fantastic in undoing changes.  The majority of the time, you may want to revert a change due to a specific commit, so ``git revert`` is generally preferred, since it only undoes the changes brought about the commits you specify. Also note, that if you ``git reset``, you change the state of the file to a specific commit.  This means all the subsequent changes from that point onwards are lost.  And if you ``git reset --hard`` you will lose _everything_ inbetween.
 
 Of course, if similar lines were edited in subsequent commits, they will need to be resolved manually.  We'll look at that scenario in a subsequent lecture.
 
+# Just a note...
 
+Never _ever_ use ``git reset`` on a public repository.  If you pull a new version of a repo and disagree with a change committed by another user, rather use ``git revert`` and explain your reasons for doing so. The ``git reset`` command will stuff up the commit history and people will shout at you. To be clear, you may use ``git reset`` on local changes you've made _before_ you push your commits back to the repo.
 
+# In summary 
 
-
-
-
-Our scenario is a little complicated, but the ``reset`` command has fairly trivial usages too. 
-
-
+``git reset [commitid]`` - Change the file(s) back to the state they were in [commitid]
+``git revert [commitid]`` - UNDO the changes made in [commitid(s)]. Subsequent changes are still applied.
 
