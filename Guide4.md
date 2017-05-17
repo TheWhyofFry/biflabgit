@@ -155,11 +155,13 @@ You will notice that the commit for ``Line 3`` has not been reverted.  This is b
 $ > git reset --hard f8e297f #reset to the point before the revert
 $ > git revert --no-commit 0c03424..HEAD
 ```
-This will revert all the commits from "Edit Line 1" onward.  The reason for the ``--no-commit`` parameter in this example, is because _each_ commit will be reverted in turn.  When you use ``--no-commit`` the total reversions are consolidated and you can do a manual commit with an appropriate message. 
+This will revert all the commits from "Edit Line 1" onward (HEAD being the most recent commit).  The reason for the ``--no-commit`` parameter in this example, is because _each_ commit will be reverted in turn.  When you use ``--no-commit`` the total reversions are consolidated and you can do a manual commit with an appropriate message. 
 
 ### Why is it cool?
 
-Well, undoing disastrous changes is always great.  Both tools, ``git reset`` and ``git revert`` are fantastic in undoing changes.  The majority of the time, you may want to revert a change due to a specific commit, so ``git revert`` is generally preferred, since it only undoes the changes brought about by that specific commit. Furthermore, you can specify the files(s) without reverting changes to other files in the same commit.
+Well, undoing disastrous changes is always great.  Both tools, ``git reset`` and ``git revert`` are fantastic in undoing changes.  The majority of the time, you may want to revert a change due to a specific commit, so ``git revert`` is generally preferred, since it only undoes the changes brought about by that specific commit. Also note, that if you ``git reset``, you change the state of the file to a specific commit.  This means all the subsequent changes from that point onwards are lost.  And if you ``git reset --hard`` you will lose _everything_ inbetween.
+
+Of course, if similar lines were edited in subsequent commits, they will need to be resolved manually.  We'll look at that scenario in a subsequent lecture.
 
 
 
